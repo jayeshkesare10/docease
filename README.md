@@ -12,6 +12,24 @@ DOCEASE is a full-stack, responsive web application designed to help ordinary In
 
 ---
 
+## ⚡ How to Run Anytime (One-Click)
+
+### Option 1: Desktop Shortcut or Batch File (Easiest)
+- Double-click **`DOCEASE.lnk`** directly on your Windows Desktop, OR
+- Open this folder and double-click **`START_DOCEASE.bat`**.
+- It automatically launches both the backend and frontend concurrently and opens [http://localhost:5173](http://localhost:5173) in your default browser!
+- To cleanly stop the app anytime, double-click **`STOP_DOCEASE.bat`** or press `Ctrl + C` in the console window.
+
+### Option 2: Terminal / Command Prompt
+In the project root folder (`Documentation app`), run:
+```bash
+npm start
+```
+This runs both the API server (port 5000) and the React frontend (port 5173) in parallel.
+
+
+---
+
 ## 🔑 Default Administrator Credentials
 
 For accessing the **Admin CMS** and **Official Desk Approvals**:
