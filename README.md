@@ -1,0 +1,63 @@
+# DOCEASE — A Complete Documentation Guidance Platform
+
+DOCEASE is a full-stack, responsive web application designed to help ordinary Indian citizens (students, parents, working professionals, job seekers, and senior citizens) navigate documentation requirements, understand officially accepted alternative proofs, follow step-by-step procedures, and book appointments at verified facilitation centers.
+
+---
+
+## 🌐 Localhost Links
+
+- **Frontend Application (Vite + React)**: [http://localhost:5173](http://localhost:5173)
+- **Backend API Server (Express + Node.js)**: [http://localhost:5000](http://localhost:5000)
+- **API Health Check**: [http://localhost:5000/api/health](http://localhost:5000/api/health)
+
+---
+
+## 🔑 Default Administrator Credentials
+
+For accessing the **Admin CMS** and **Official Desk Approvals**:
+- **Email**: `admin@docease.gov.in`
+- **Password**: `Admin@DocEase2026!`
+
+*(New citizens can register directly from the UI with real OTP verification).*
+
+---
+
+## 🚀 Key Implemented Workflows
+
+1. **Document Guidance Engine**:
+   - Comprehensive guides for **Indian Passport**, **Aadhaar Card**, **PAN Card**, **Income Certificate**, **Caste Validity**, **Driving Licence (Parivahan)**, **Domicile Certificate**, and **College & University Admissions**.
+   - Mandatory, Conditional, and Optional requirement badges.
+   - Expandable **Accepted Alternative Documents** under official gazette rules.
+   - **How to Obtain Missing Documents** popup with location, required proofs, statutory fees, and verified timelines.
+
+2. **Multi-Language Support (Localization)**:
+   - Instant dynamic switching between **English**, **हिंदी (Hindi)**, and **मराठी (Marathi)** across all navigation, forms, guidance, and status alerts.
+
+3. **Personalized Citizen Checklists**:
+   - Mark documents as *Available*, *Missing*, or *Not Applicable*.
+   - Live readiness progress tracker.
+   - Clear distinction between citizen self-reported status and official government verification.
+
+4. **Appointment Booking & Holiday Verification**:
+   - Double-booking prevention and concurrency control.
+   - Automatic blocking of weekend dates (Saturdays & Sundays) and gazetted national/state holidays.
+   - Real-time time slot availability calculation.
+
+5. **Cryptographic QR Code Pass & Official Verification**:
+   - Opaque verification token generation (`vtoken_...`) that avoids exposing sensitive PII in plain text.
+   - High-resolution QR pass generation and print capability.
+   - Official QR Verification Desk for authorized officers to inspect citizen checklist readiness, log outcomes, and generate audit trails.
+
+6. **Encrypted Private Document Vault**:
+   - Cloud object storage outside public web root.
+   - File type validation (PDF, JPG, PNG) and size limitation (up to 10MB).
+   - Secure authenticated stream download and inline preview.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Frontend**: React 19, TypeScript, Tailwind CSS v4, Lucide React, QRCode React.
+- **Backend**: Node.js v24, Express, TypeScript, Multer, JSON Web Tokens.
+- **Database**: SQLite with `node:sqlite` (`DatabaseSync`), WAL mode, persistent storage (`data/docease.db`).
+- **Security**: Cryptographic password hashing (`scryptSync` + 16-byte random salt), timing-safe comparisons, role-based access control (RBAC), and brute-force rate limiters.

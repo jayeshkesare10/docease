@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Production builds
+dist/
+dist-ssr/
+build/
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.local
+
+# Local SQLite databases and temp files
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+server/data/*.db*
+
+# User Vault Storage files
+server/data/vault_storage/*
+!server/data/vault_storage/.gitkeep
+
+# Editor & OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.tsbuildinfo
