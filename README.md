@@ -79,3 +79,34 @@ For accessing the **Admin CMS** and **Official Desk Approvals**:
 - **Backend**: Node.js v24, Express, TypeScript, Multer, JSON Web Tokens.
 - **Database**: SQLite with `node:sqlite` (`DatabaseSync`), WAL mode, persistent storage (`data/docease.db`).
 - **Security**: Cryptographic password hashing (`scryptSync` + 16-byte random salt), timing-safe comparisons, role-based access control (RBAC), and brute-force rate limiters.
+
+---
+
+## 🌐 Production Deployment
+
+### Option 1: Full-Stack Deployment (Render / Railway / Cloud VMs)
+1. Push this repository to your GitHub account (`git push origin main`).
+2. Connect your repository on [Render](https://render.com) (or Railway / Fly.io).
+3. If using **Render**:
+   - Create a **Web Service** from GitHub.
+   - **Environment**: Node
+   - **Build Command**: `npm install && npm run build`
+   - **Start Command**: `npm start`
+   - **Environment Variables**:
+     - `NODE_ENV=production`
+     - `PORT=5000`
+     - `JWT_SECRET=your_production_secret_32_characters_long`
+   - *(The backend will serve both the REST API and the built React frontend on a single URL).*
+
+### Option 2: Docker Container Deployment
+A multi-stage production Dockerfile is included:
+```bash
+docker build -t docease .
+docker run -p 5000:5000 -e JWT_SECRET=your_jwt_secret docease
+```
+
+### Option 3: Separate Frontend & Backend (e.g., Vercel + Render)
+- **Backend**: Deploy `server/` to Render/Railway.
+- **Frontend**: Deploy `client/` to Vercel/Netlify and configure:
+  - `VITE_API_URL=https://your-backend.onrender.com/api`
+
