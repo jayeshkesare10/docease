@@ -1,0 +1,14 @@
+node_modules
+client/node_modules
+server/node_modules
+client/dist
+server/dist
+server/data/*.db*
+server/data/vault_storage/*
+!server/data/vault_storage/.gitkeep
+.git
+.github
+.env
+.env.local
+*.log
+chat_transcript.jsonl

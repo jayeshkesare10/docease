@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: docease
+    env: node
+    plan: free
+    buildCommand: npm install && npm --prefix server install && npm --prefix client install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: JWT_SECRET
+        generateValue: true

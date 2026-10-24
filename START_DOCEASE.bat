@@ -19,6 +19,6 @@ echo.
 start /b "" cmd /c "timeout /t 4 /nobreak >nul && start http://localhost:5173"
 
 :: Run both Backend and Frontend concurrently
-call npm.cmd start
+call npm.cmd run dev
 
 pause

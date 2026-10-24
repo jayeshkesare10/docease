@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import fs from 'node:fs';
 import { initDatabase, db } from './db.js';
 import { hashPassword } from './auth.js';
 
@@ -73,6 +74,23 @@ app.use('/api/vault', vaultRoutes);
 app.use('/api/appointments', appointmentRoutes);
 app.use('/api/official', officialRoutes);
 app.use('/api/admin', adminRoutes);
+
+// 404 Handler for undefined API routes
+app.all('/api/*', (_req: Request, res: Response) => {
+  res.status(404).json({ error: 'API endpoint not found' });
+});
+
+// Serve frontend client build in production
+const clientDistPath = path.resolve(__dirname, '../../client/dist');
+if (fs.existsSync(clientDistPath)) {
+  app.use(express.static(clientDistPath));
+  app.get('*', (req: Request, res: Response, next: NextFunction) => {
+    if (req.path.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(path.resolve(clientDistPath, 'index.html'));
+  });
+}
 
 // Global Error Handler
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {

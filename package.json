@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "DOCEASE — A Documentation Guide Platform",
   "scripts": {
-    "start": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" \"npm.cmd --prefix server run dev\" \"npm.cmd --prefix client run dev\"",
-    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" \"npm.cmd --prefix server run dev\" \"npm.cmd --prefix client run dev\"",
-    "server": "npm.cmd --prefix server run dev",
-    "client": "npm.cmd --prefix client run dev",
-    "build:client": "npm.cmd --prefix client run build",
-    "build:server": "npm.cmd --prefix server run build",
-    "build": "npm.cmd run build:server && npm.cmd run build:client"
+    "start": "node server/dist/server.js",
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "server": "npm --prefix server run dev",
+    "client": "npm --prefix client run dev",
+    "build:client": "npm --prefix client run build",
+    "build:server": "npm --prefix server run build",
+    "build": "npm run build:server && npm run build:client"
   },
   "devDependencies": {
     "concurrently": "^10.0.6"
